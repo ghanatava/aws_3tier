@@ -6,7 +6,6 @@ from django.db import models
 
 # add this
 class Todo(models.Model):
-  id=models.IntegerField(primary_key=True)
   title = models.CharField(max_length=120)
   description = models.TextField()
   completed = models.BooleanField(default=False)
