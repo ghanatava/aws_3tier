@@ -22,7 +22,7 @@ class App extends Component {
   }
   refreshList = () => {
     axios
-      .get("http://localhost:8000/api/todos/")
+      .get("http://NLB-79b0c032d7132f31.elb.ap-southeast-1.amazonaws.com:8000/todos/") //replace with loadbalancers ip
       .then(res => this.setState({ todoList: res.data }))
       .catch(err => console.log(err));
   };
@@ -93,17 +93,17 @@ class App extends Component {
     this.toggle();
     if (item.id) {
       axios
-        .put(`http://localhost:8000/api/todos/${item.id}/`, item)
+        .put(`http://NLB-79b0c032d7132f31.elb.ap-southeast-1.amazonaws.com:8000/todos/${item.id}/`, item)
         .then(res => this.refreshList());
       return;
     }
     axios
-      .post("http://localhost:8000/api/todos/", item)
+      .post("http://NLB-79b0c032d7132f31.elb.ap-southeast-1.amazonaws.com:8000/todos/", item)
       .then(res => this.refreshList());
   };
   handleDelete = item => {
     axios
-      .delete(`http://localhost:8000/api/todos/${item.id}`)
+      .delete(`http://NLB-79b0c032d7132f31.elb.ap-southeast-1.amazonaws.com:8000/todos/${item.id}`)
       .then(res => this.refreshList());
   };
   createItem = () => {
