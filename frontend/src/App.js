@@ -22,7 +22,7 @@ class App extends Component {
   }
   refreshList = () => {
     axios
-      .get("http://nlb-79b0c032d7132f31.elb.ap-southeast-1.amazonaws.com/api/todos/") //replace with loadbalancers ip
+      .get("http://NLB-b55f96bbcc9d8c2c.elb.ap-southeast-1.amazonaws.com:8000/api/todos/") //replace with loadbalancers ip
       .then(res => this.setState({ todoList: res.data }))
       .catch(err => console.log(err));
   };
@@ -93,17 +93,17 @@ class App extends Component {
     this.toggle();
     if (item.id) {
       axios
-        .put(`http://nlb-79b0c032d7132f31.elb.ap-southeast-1.amazonaws.com/api/todos/${item.id}/`, item)
+        .put(`NLB-b55f96bbcc9d8c2c.elb.ap-southeast-1.amazonaws.com:8000/api/todos/${item.id}/`, item)
         .then(res => this.refreshList());
       return;
     }
     axios
-      .post("http://nlb-79b0c032d7132f31.elb.ap-southeast-1.amazonaws.com/api/todos/", item)
+      .post("http://NLB-b55f96bbcc9d8c2c.elb.ap-southeast-1.amazonaws.com:8000/api/todos/", item)
       .then(res => this.refreshList());
   };
   handleDelete = item => {
     axios
-      .delete(`http://nlb-79b0c032d7132f31.elb.ap-southeast-1.amazonaws.com/api/todos/${item.id}`)
+      .delete(`http://NLB-b55f96bbcc9d8c2c.elb.ap-southeast-1.amazonaws.com:8000/api/todos/${item.id}`)
       .then(res => this.refreshList());
   };
   createItem = () => {
