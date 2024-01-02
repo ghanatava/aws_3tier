@@ -3,3 +3,20 @@ __pycache__/
 venv/
 .env
 build/
+# Ignore Terraform files containing sensitive information
+*.tfstate
+*.tfstate.*
+*.tfvars
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Ignore .terraform directory which contains downloaded plugins and modules
+.terraform/
+
+# Ignore `.tfplan` files that may contain sensitive information
+*.tfplan
+
+# Ignore crash log files
+crash.log
